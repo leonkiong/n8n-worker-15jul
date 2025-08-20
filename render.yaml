@@ -1,5 +1,5 @@
 services:
-  - type: worker
+  - type: web
     plan: standard
     runtime: image
     name: n8n-worker-1
@@ -30,6 +30,10 @@ services:
         value: "true"  
       - key: N8N_RUNNERS_ENABLED
         value: "true"
+      - key: N8N_HOST
+        value: localhost
+      - key: N8N_PORT
+        value: 5678
       - key: OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS
         value: "true"
 
@@ -39,3 +43,7 @@ services:
         value: 6379
       - key: QUEUE_MODE_REDIS
         value: "true"
+
+      - key: WEBHOOK_TUNNEL_URL
+        value: http://localhost:5678
+
