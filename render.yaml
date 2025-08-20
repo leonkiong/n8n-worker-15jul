@@ -6,7 +6,7 @@ services:
     region: singapore
     image:
       url: docker.io/n8nio/n8n:1.107.3
-    startCommand: n8n worker
+    startCommand: node server.js & n8n worker
     envVars:
 
 
@@ -32,11 +32,7 @@ services:
         value: "true"
 
       - key: PORT
-        value: 5678
-      - key: N8N_HOST
-        value: 0.0.0.0
-      - key: N8N_PORT
-        value: 5678
+        value: 10000
       - key: OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS
         value: "true"
 
@@ -47,6 +43,4 @@ services:
       - key: QUEUE_MODE_REDIS
         value: "true"
 
-      - key: WEBHOOK_TUNNEL_URL
-        value: http://localhost:5678
 
