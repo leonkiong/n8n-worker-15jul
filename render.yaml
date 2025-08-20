@@ -5,8 +5,8 @@ services:
     name: n8n-worker-1
     region: singapore
     image:
-      url: docker.io/n8nio/n8n:1.97.0
-    startCommand: n8n worker --concurrency=5
+      url: docker.io/n8nio/n8n:1.107.3
+    startCommand: n8n worker --concurrency=50
     envVars:
       - key: N8N_ENCRYPTION_KEY
         value: /Y9rxjt7Bsh5IK/5BhJuIKQ6/DHYemH3i6y46KQUndc=
