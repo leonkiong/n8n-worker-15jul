@@ -1,5 +1,5 @@
 {
-  "name": "n8n-worker-dummy-server",
+  "name": "n8n-worker-server",
   "version": "1.0.0",
   "main": "server.js",
   "dependencies": {
