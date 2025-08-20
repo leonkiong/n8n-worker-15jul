@@ -1,15 +1,14 @@
 services:
-  - type: web
+  - type: worker
     plan: standard
     runtime: image
     name: n8n-worker-1
     region: singapore
     image:
       url: docker.io/n8nio/n8n:1.107.3
-    startCommand: n8n worker --concurrency=50
+    startCommand: n8n worker
     envVars:
-      - key: N8N_ENCRYPTION_KEY
-        value: /Y9rxjt7Bsh5IK/5BhJuIKQ6/DHYemH3i6y46KQUndc=
+
 
       - key: DB_TYPE
         value: postgresdb
@@ -22,13 +21,21 @@ services:
       - key: DB_POSTGRESDB_USER
         value: n8n_db_main_user
 
-      - key: QUEUE_MODE_REDIS
+      - key: EXECUTIONS_MODE
+        value: queue
+      - key: N8N_ENCRYPTION_KEY
+        value: /Y9rxjt7Bsh5IK/5BhJuIKQ6/DHYemH3i6y46KQUndc=
+        
+      - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+        value: "true"  
+      - key: N8N_RUNNERS_ENABLED
         value: "true"
-      - key: QUEUE_MODE_REDIS_HOST
-        value: noted-earwig-52781.upstash.io
-      - key: QUEUE_MODE_REDIS_PORT
-        value: "6379"
-      - key: QUEUE_MODE_REDIS_PASSWORD
-        value: Ac4tAAIncDEyZTFiNDhlYTM1ZjM0YzRlYWMwOWFkYzU5N2ExMzg4MnAxNTI3ODE
-      - key: QUEUE_MODE_REDIS_TLS
+      - key: OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS
+        value: "true"
+
+      - key: QUEUE_BULL_REDIS_HOST
+        value: red-d2iofu6r433s73e1l1q0
+      - key: QUEUE_BULL_REDIS_PORT
+        value: 6379
+      - key: QUEUE_MODE_REDIS
         value: "true"
